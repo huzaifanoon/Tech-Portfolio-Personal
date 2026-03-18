@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@800&amp;display=swap');
+        .m { fill: #00f0ff; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 48px; }
+        .h { fill: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 48px; }
+    </style>
+    <rect width="100" height="100" rx="22" fill="#050510" />
+    <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle">
+        <tspan class="m">M</tspan><tspan class="h">H.</tspan>
+    </text>
+</svg>
