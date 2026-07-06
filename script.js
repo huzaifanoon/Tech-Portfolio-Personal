@@ -295,11 +295,11 @@ If someone asks something completely unrelated to Huzaifa, politely redirect the
             btn.addEventListener('click', () => {
                 // Update active buttons' neumorphic style
                 filterBtns.forEach(b => {
-                    b.classList.remove('active', 'neumorph-inset');
+                    b.classList.remove('active', 'neumorph-inset', 'primary-gradient', 'text-white');
                     b.classList.add('neumorph-extruded');
                 });
                 btn.classList.remove('neumorph-extruded');
-                btn.classList.add('active', 'neumorph-inset');
+                btn.classList.add('active', 'primary-gradient', 'text-white');
 
                 const filter = btn.getAttribute('data-filter');
                 projectCards.forEach(card => {
