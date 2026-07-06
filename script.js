@@ -3,33 +3,7 @@
    Theme toggle, scroll-to-top, scroll spy, chat widget (Groq AI)
    =================================================================== */
 
-// ===== 1. THEME INITIALIZATION & TOGGLING =====
-function initTheme() {
-    const saved = localStorage.getItem('portfolio-theme');
-    const html = document.documentElement;
-    if (saved === 'dark') {
-        html.classList.remove('light');
-        html.classList.add('dark');
-    } else {
-        html.classList.remove('dark');
-        html.classList.add('light');
-    }
-}
-
-function toggleTheme() {
-    const html = document.documentElement;
-    if (html.classList.contains('dark')) {
-        html.classList.remove('dark');
-        html.classList.add('light');
-        localStorage.setItem('portfolio-theme', 'light');
-    } else {
-        html.classList.remove('light');
-        html.classList.add('dark');
-        localStorage.setItem('portfolio-theme', 'dark');
-    }
-}
-
-initTheme();
+// Theme is fixed to Light Mode. Theme toggling removed.
 
 document.addEventListener('DOMContentLoaded', () => {
 
