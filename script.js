@@ -198,12 +198,14 @@ If someone asks something completely unrelated to Huzaifa, politely redirect the
     function openChat() {
         chatWidget.classList.add('active');
         chatOverlay.classList.add('active');
+        document.body.classList.add('no-scroll');
         chatInput.focus();
     }
 
     function closeChat() {
         chatWidget.classList.remove('active');
         chatOverlay.classList.remove('active');
+        document.body.classList.remove('no-scroll');
     }
 
     if (chatBtn) chatBtn.addEventListener('click', openChat);

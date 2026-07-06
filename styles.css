@@ -61,6 +61,12 @@ body {
     transition: background-color 0.35s ease, color 0.35s ease;
 }
 
+body.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
 /* ===== Unified Neumorphic Shadow System ===== */
 .neumorph-extruded {
     background-color: var(--surface-color);
@@ -338,6 +344,8 @@ body::-webkit-scrollbar-thumb {
 .chat-messages {
     flex: 1;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     padding: 16px;
     display: flex;
     flex-direction: column;
