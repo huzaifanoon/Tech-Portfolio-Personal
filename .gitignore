@@ -1,0 +1,24 @@
+# Environment variables (NEVER push to GitHub!)
+.env
+.env.local
+.env.*
+*.env
+
+# Vercel & Node
+.vercel/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Extra files
+*.pdf
+original_index.txt
+2.png
+3.png
+6.jpeg
+

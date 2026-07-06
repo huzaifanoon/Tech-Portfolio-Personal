@@ -1,467 +1,1411 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Huzaifa | Software Developer</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Muhammad Huzaifa | Mobile Application Developer &amp; Full Stack Engineer</title>
     <meta name="description"
-        content="Portfolio of Muhammad Huzaifa, Full Stack Developer and Tech Entrepreneur based in Islamabad.">
+        content="Portfolio of Muhammad Huzaifa — Mobile Application Developer, Full Stack Engineer, and founder of Creative Dynamic Studio. Specializing in Flutter, Kotlin, and AI integrations.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
-    <!-- Modern Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Tailwind CSS with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom CSS -->
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="styles.css">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "var(--primary)",
+                        "primary-container": "var(--primary)",
+                        "on-primary": "#ffffff",
+                        surface: "var(--surface-color)",
+                        "surface-dim": "var(--surface-color)",
+                        "surface-bright": "var(--surface-variant-color)",
+                        "surface-variant": "var(--surface-variant-color)",
+                        "on-surface": "var(--text-main)",
+                        "on-surface-variant": "var(--text-variant)",
+                        outline: "var(--border-outline)",
+                        "outline-variant": "var(--border-outline)",
+                        background: "var(--bg-color)"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "0.75rem",
+                        xl: "1rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px",
+                        unit: "8px",
+                        "container-max": "1280px",
+                        gutter: "24px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-xl-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-bold": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "headline-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-bold": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
 </head>
 
-<body class="dark-theme">
+<body class="font-body-md text-body-md overflow-x-hidden antialiased">
 
-    <!-- Dynamic Background Elements -->
-    <div class="glow-circle top-right"></div>
-    <div class="glow-circle bottom-left"></div>
-    <div class="grid-overlay"></div>
+    <!-- Theme Toggle Button -->
+    <button id="themeToggle" onclick="toggleTheme()"
+        class="fixed top-5 right-5 md:top-8 md:right-8 w-12 h-12 md:w-14 md:h-14 rounded-full neumorph-extruded flex items-center justify-center z-[60] hover:scale-110 active:scale-95 transition-all duration-300"
+        aria-label="Toggle theme" style="color: var(--primary);">
+        <span class="material-symbols-outlined text-2xl dark:hidden">dark_mode</span>
+        <span class="material-symbols-outlined text-2xl hidden dark:inline">light_mode</span>
+    </button>
 
-    <!-- Navigation -->
-    <header class="glass-nav">
-        <div class="nav-container">
-            <a href="#home" class="logo">
-                <span class="logo-accent">M</span>H.
-            </a>
+    <!-- ===== SIDEBAR NAVIGATION ===== -->
+    <div id="sidebarOverlay" class="sidebar-overlay md:hidden"></div>
 
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <nav class="nav-links">
-                <a href="#about" class="nav-item">About</a>
-                <a href="#skills" class="nav-item">Skills</a>
-                <a href="#projects" class="nav-item">Projects</a>
-                <a href="#experience" class="nav-item">Experience</a>
-                <a href="#contact" class="nav-btn">Get In Touch</a>
-            </nav>
+    <nav class="fixed left-0 top-0 h-screen w-64 z-50 flex flex-col items-center py-8 space-y-6 md:translate-x-0 -translate-x-full transition-transform duration-300"
+        id="sidebar" style="background-color: var(--surface-color); box-shadow: var(--sidebar-shadow);">
+        <button id="sidebarClose" class="sidebar-close-btn md:hidden neumorph-extruded" aria-label="Close navigation">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <!-- Profile -->
+        <div class="flex flex-col items-center space-y-3 px-4 w-full">
+            <div class="w-16 h-16 rounded-full neumorph-extruded p-1">
+                <img class="w-full h-full rounded-full object-cover profile-img" src="pic2.png"
+                    alt="Muhammad Huzaifa" />
+            </div>
+            <div class="hidden md:block text-center">
+                <h2 class="font-headline-md text-[18px] font-bold" style="color: var(--text-main);">M. Huzaifa</h2>
+                <p class="font-label-sm text-label-sm font-semibold" style="color: var(--text-variant);">Mobile App
+                    Developer</p>
+            </div>
         </div>
-    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero section-padding reveal">
-            <div class="hero-content">
-                <span class="greeting">Hello, world! I am</span>
-                <h1 class="hero-title">Muhammad <br><span class="gradient-text">Huzaifa</span></h1>
-                <div class="typewriter-container">
-                    <h2 class="hero-subtitle">I build <span class="typewriter" id="typewriter"></span><span
-                            class="cursor">|</span></h2>
-                </div>
-                <p class="hero-desc">
-                    Full Stack Developer, Tech Entrepreneur, and founder of Creative Dynamic Society. Passionate about
-                    transforming ideas into high-performance, beautiful software.
-                </p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn primary-btn">
-                        <span>View Work</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <div class="social-links">
-                        <a href="https://github.com/huzaifanoon" target="_blank" class="social-icon"
-                            aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/muhammad-huzaifa-811772275/" target="_blank"
-                            class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <!-- Nav Links - ALL items use consistent square padding -->
+        <div class="nav-links flex flex-col w-full px-3 md:px-4 space-y-2 pt-4 flex-1">
+            <a class="nav-item-active" href="#home">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+                <span class="hidden md:block font-label-bold text-label-bold">Home</span>
+            </a>
+            <a href="#skills">
+                <span class="material-symbols-outlined">code</span>
+                <span class="hidden md:block font-label-bold text-label-bold">Skills</span>
+            </a>
+            <a href="#projects">
+                <span class="material-symbols-outlined">grid_view</span>
+                <span class="hidden md:block font-label-bold text-label-bold">Projects</span>
+            </a>
+            <a href="#experience">
+                <span class="material-symbols-outlined">business_center</span>
+                <span class="hidden md:block font-label-bold text-label-bold">Work</span>
+            </a>
+            <a href="#services">
+                <span class="material-symbols-outlined">design_services</span>
+                <span class="hidden md:block font-label-bold text-label-bold">Services</span>
+            </a>
+            <a href="#education">
+                <span class="material-symbols-outlined">school</span>
+                <span class="hidden md:block font-label-bold text-label-bold">Education</span>
+            </a>
+            <a href="#contact">
+                <span class="material-symbols-outlined">mail</span>
+                <span class="hidden md:block font-label-bold text-label-bold">Contact</span>
+            </a>
+        </div>
+
+        <!-- Hire Me -->
+        <div class="w-full px-4 pb-2">
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
+                class="w-full py-3 rounded-2xl primary-gradient text-white font-label-bold text-label-bold hover:scale-105 transition-transform duration-200 accent-glow flex items-center justify-center gap-2">
+                <span>Hire Me</span>
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+    </nav>
+
+    <button id="floatingMenuBtn" class="floating-menu-btn md:hidden neumorph-extruded" aria-label="Open navigation">
+        <span class="material-symbols-outlined">menu</span>
+        <span class="floating-menu-label">Menu</span>
+    </button>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="md:ml-64 min-h-screen px-margin-mobile md:px-margin-desktop py-10 relative">
+
+        <!-- Mobile Header -->
+        <header class="md:hidden flex justify-between items-center mb-8 pr-16">
+            <div class="font-headline-md text-headline-md font-black" style="color: var(--text-main);">MH.</div>
+        </header>
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="max-w-container-max mx-auto mb-20" id="home">
+            <div
+                class="neumorph-extruded rounded-[24px] p-8 md:p-12 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
+                <div class="flex-1 space-y-6 z-10">
+                   <!-- <div class="inline-block py-2 px-6 rounded-full neumorph-inset font-label-bold text-label-bold tracking-wider"
+                        style="color: var(--primary);">
+                        Mobile App Developer
+                    </div> -->
+                    <h1 class="font-headline-xl text-headline-xl leading-none" style="color: var(--text-main);">
+                        Muhammad <br />
+                        <span style="color: var(--primary);">Huzaifa</span>
+                    </h1>
+                    <div class="flex items-center gap-4 py-2 pl-6" style="border-left: 4px solid var(--primary);">
+                        <span class="font-headline-md text-headline-md" style="color: var(--text-variant);">Mobile App
+                            Developer &amp; Full Stack Engineer</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="image-wrapper">
-                    <!-- Tech badges floating around the image -->
-                    <div class="floating-badge badge-1"><i class="fab fa-react"></i></div>
-                    <div class="floating-badge badge-2"><i class="fab fa-python"></i></div>
-                    <div class="floating-badge badge-3"><i class="fab fa-node-js"></i></div>
-
-                    <div class="profile-img-container">
-                        <img src="pic2.png" alt="Muhammad Huzaifa" class="profile-img">
-                        <div class="img-glow"></div>
+                    <p class="font-body-lg text-body-lg max-w-xl leading-relaxed" style="color: var(--text-variant);">
+                        I build mobile products with Flutter, Dart, Kotlin, and Jetpack Compose, with enough backend
+                        depth to ship complete systems. My flagship project is Zylo, a 34+ screen personal Life OS
+                        across Android, iOS, Web, and Windows. I was also shortlisted in the global Top 3 for a Junior
+                        Android Developer role at Appetiser Apps.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="proof-chip px-4 py-2 rounded-full font-label-bold text-[12px]"
+                            style="color: var(--text-main);">Top 3 Appetiser Shortlist</span>
+                        <span class="proof-chip px-4 py-2 rounded-full font-label-bold text-[12px]"
+                            style="color: var(--text-main);">34+ Screen Flutter App</span>
+                        <span class="proof-chip px-4 py-2 rounded-full font-label-bold text-[12px]"
+                            style="color: var(--text-main);">BSCS, COMSATS</span>
+                        <span class="proof-chip px-4 py-2 rounded-full font-label-bold text-[12px]"
+                            style="color: var(--text-main);">Islamabad, Pakistan</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about section-padding reveal">
-            <div class="section-header">
-                <span class="section-subtitle">Who I Am</span>
-                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-text glass-card">
-                    <p>I am a dynamic <strong>Computer Science student</strong> at COMSATS University Islamabad,
-                        blending technical agility with strong leadership experience. </p>
-                    <p>Beyond mastering JavaScript, React, and Python technologies, I thrive at the intersection of
-                        business and technology. As the CEO & Founder of Creative Dynamic Studio (CDS), I lead one of
-                        Islamabad's largest student-led communities, managing technical teams and scaling mega-events
-                        like Freshers Fest 2024 to thousands of attendees.</p>
-                    <p>Whether it's building fully scalable web applications, designing intuitive UIs, or developing
-                        machine learning solutions, I am driven by a passion to apply my problem-solving skills to
-                        high-growth software projects.</p>
-                </div>
-
-                <div class="about-stats">
-                    <div class="stat-card glass-card">
-                        <h3 class="stat-num">3+</h3>
-                        <p class="stat-label">Years of<br>Experience</p>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <h3 class="stat-num">1M+</h3>
-                        <p class="stat-label">Social Media<br>Reach Managed</p>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <h3 class="stat-num">3.58</h3>
-                        <p class="stat-label">Current<br>CGPA</p>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <h3 class="stat-num">40+</h3>
-                        <p class="stat-label">Successful<br>Projects</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills section-padding reveal">
-            <div class="section-header">
-                <span class="section-subtitle">My Arsenal</span>
-                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
-            </div>
-
-            <div class="skills-container">
-                <div class="skill-category glass-card">
-                    <div class="category-header">
-                        <i class="fas fa-code icon-gradient"></i>
-                        <h3>Languages & Core</h3>
-                    </div>
-                    <ul class="skill-tags">
-                        <li><i class="fab fa-python"></i> Python</li>
-                        <li><i class="fab fa-java"></i> Java</li>
-                        <li><i class="fas fa-c"></i> C++</li>
-                        <li><i class="fas fa-code"></i> Dart</li>
-                        <li><i class="fab fa-js"></i> JavaScript</li>
-                        <li><i class="fas fa-project-diagram"></i> DSA</li>
-                        <li><i class="fas fa-cubes"></i> OOP</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category glass-card">
-                    <div class="category-header">
-                        <i class="fas fa-laptop-code icon-gradient"></i>
-                        <h3>Web Development</h3>
-                    </div>
-                    <ul class="skill-tags">
-                        <li><i class="fab fa-react"></i> React.js</li>
-                        <li><i class="fab fa-node-js"></i> Node.js</li>
-                        <li><i class="fas fa-server"></i> FastAPI</li>
-                        <li><i class="fas fa-network-wired"></i> RESTful APIs</li>
-                        <li><i class="fab fa-laravel"></i> Laravel</li>
-                        <li><i class="fab fa-html5"></i> HTML5/CSS3</li>
-                        <li><i class="fab fa-bootstrap"></i> Tailwind CSS</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category glass-card">
-                    <div class="category-header">
-                        <i class="fas fa-database icon-gradient"></i>
-                        <h3>Database & Tools</h3>
-                    </div>
-                    <ul class="skill-tags">
-                        <li><i class="fab fa-flutter"></i> Flutter</li>
-                        <li><i class="fas fa-leaf"></i> MongoDB</li>
-                        <li><i class="fas fa-database"></i> PostgreSQL</li>
-                        <li><i class="fas fa-table"></i> SQL</li>
-                        <li><i class="fab fa-git-alt"></i> Git</li>
-                        <li><i class="fab fa-wordpress"></i> WordPress</li>
-                        <li><i class="fab fa-shopify"></i> Shopify</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Projects Section -->
-        <section id="projects" class="projects section-padding reveal">
-            <div class="section-header">
-                <span class="section-subtitle">My Work</span>
-                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <a href="https://github.com/huzaifanoon/CDS-EventManagement-FullStackWebApp" target="_blank"
-                    class="project-card glass-card">
-                    <div class="project-img-wrapper">
-                        <!-- Abstract vibrant placeholder from Unsplash -->
-                        <img src="2.png" alt="Event Platform" class="project-img">
-                        <div class="project-overlay">
-                            <span class="view-btn"><i class="fab fa-github"></i> View Repository</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Event Platform (Full Stack)</h3>
-                        <p>Full-stack web application implementing authentication, dynamic event listings, and backend
-                            APIs following clean architecture principles.</p>
-                        <div class="tech-stack-mini">
-                            <span>React</span>
-                            <span>FastAPI</span>
-                            <span>PostgreSQL</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project 2 -->
-                <a href="https://github.com/huzaifanoon/Advanced-MongoDB-Management-System-CDSISB" target="_blank"
-                    class="project-card glass-card">
-                    <div class="project-img-wrapper">
-                        <img src="3.png" alt="Finance App" class="project-img">
-                        <div class="project-overlay">
-                            <span class="view-btn"><i class="fab fa-github"></i> View Repository</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Event Data Management</h3>
-                        <p>MongoDB-based scalable application built designed for high-performance CRUD operations and
-                            optimized queries for event data.</p>
-                        <div class="tech-stack-mini">
-                            <span>MongoDB</span>
-                            <span>Node.js</span>
-                            <span>Express</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project 3 -->
-                <a href="https://github.com/huzaifanoon/Campus-Connect-FullStack-Flutter-MobileApp" target="_blank"
-                    class="project-card glass-card">
-                    <div class="project-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800"
-                            alt="Campus Connect App" class="project-img">
-                        <div class="project-overlay">
-                            <span class="view-btn"><i class="fab fa-github"></i> View Repository</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Campus Connect App</h3>
-                        <p>A smart University Event Management Flutter application built to digitize campus event
-                            discovery, seamless registration, and admin analytics.</p>
-                        <div class="tech-stack-mini">
-                            <span>Flutter</span>
-                            <span>Dart</span>
-                            <span>Firebase</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project 4 -->
-                <a href="https://github.com/huzaifanoon/Argus-VulnerabilityScanner-RealTime" target="_blank"
-                    class="project-card glass-card">
-                    <div class="project-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1555952494-efd681c7e3f9?auto=format&fit=crop&q=80&w=800"
-                            alt="Vulnerability Scanner" class="project-img">
-                        <div class="project-overlay">
-                            <span class="view-btn"><i class="fab fa-github"></i> View Repository</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Advanced Vuln. Scanner</h3>
-                        <p>Security testing tool designed to proactively detect SQL Injection, XSS vulnerabilities,
-                            blind SQLi, and missing security headers in web applications.</p>
-                        <div class="tech-stack-mini">
-                            <span>Python</span>
-                            <span>InfoSec</span>
-                            <span>Cybersecurity</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Project 5 -->
-                <a href="https://github.com/huzaifanoon/Facial-Recognition-Attendance-System-MachineLearningProject"
-                    target="_blank" class="project-card glass-card">
-                    <div class="project-img-wrapper">
-                        <img src="6.jpeg" alt="Automatic Attendance System" class="project-img">
-                        <div class="project-overlay">
-                            <span class="view-btn"><i class="fab fa-github"></i> View Repository</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>AI Attendance System</h3>
-                        <p>Facial recognition–based attendance system employing OpenCV to automate marking, reducing
-                            manual errors via real-time face detection.</p>
-                        <div class="tech-stack-mini">
-                            <span>Machine Learning</span>
-                            <span>Flask</span>
-                            <span>OpenCV</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Experience & Education Section -->
-        <section id="experience" class="timeline-section section-padding reveal">
-            <div class="timeline-container">
-
-                <!-- Experience Timeline -->
-                <div class="timeline-column">
-                    <div class="section-header align-left">
-                        <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
-                    </div>
-
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content glass-card">
-                                <span class="timeline-date">June 2025 - Sep 2025</span>
-                                <h3>AI Intern - Software Productivity Strategist</h3>
-                                <h4>SPS</h4>
-                                <p>Assisted in the automation of billing system workflows to significantly improve
-                                    pipeline efficiency and reduce manual processing overhead. Supported
-                                    frontend/backend development tasks.</p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content glass-card">
-                                <span class="timeline-date">Jan 2024 - Jan 2026</span>
-                                <h3>Web Developer</h3>
-                                <h4>Nisum</h4>
-                                <p>Spearheaded the development and customization of responsive websites for small
-                                    businesses. Implemented full stack solutions, dynamic plugin integrations, and basic
-                                    SEO optimization.</p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content glass-card">
-                                <span class="timeline-date">2024 - Present</span>
-                                <h3>C.E.O & Founder</h3>
-                                <h4>Creative Dynamic Studio (CDS)</h4>
-                                <p>Founded and scaled one of the largest student-led tech communities in Islamabad. Led
-                                    large-scale logistics for events like Freshers Fest and FusionX, securing key brand
-                                    partnerships.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education Timeline -->
-                <div class="timeline-column">
-                    <div class="section-header align-left">
-                        <h2 class="section-title"><span class="gradient-text">Education</span></h2>
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content glass-card">
-                                <span class="timeline-date">2023 - 2027</span>
-                                <h3>BS Computer Science (BSCS)</h3>
-                                <h4>COMSATS University Islamabad</h4>
-                                <p>Core Focus: Object-Oriented Programming, Data Structures & Algorithms, Computer
-                                    Networks, and DBMS. <br><strong>CGPA: 3.58</strong></p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content glass-card">
-                                <span class="timeline-date">2021 - 2023</span>
-                                <h3>Digital Marketing Specialist</h3>
-                                <h4>Freelance</h4>
-                                <p>Executed large-scale digital marketing campaigns, gathering thousands of attendees
-                                    for events. Scaled social media pages to 1M+ reach within months through optimized
-                                    SEO strategies.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact section-padding reveal">
-            <div class="contact-container glass-card"
-                style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
-                <div class="contact-info" style="border-right: none; text-align: center;">
-                    <div class="section-header">
-                        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
-                    </div>
-                    <p class="contact-desc" style="max-width: 600px; margin: 0 auto 40px;">I'm currently looking for new
-                        opportunities in software engineering. Whether you have a question, a project proposal, or just
-                        want to say hi, feel free to reach out directly!</p>
-
-                    <div
-                        style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
-                        <a href="mailto:huzaifanoon21@gmail.com" class="btn primary-btn">
-                            <i class="fas fa-envelope"></i> Email Me
-                        </a>
+                    <div class="flex flex-row items-center gap-4 pt-4">
+                        <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})"
+                            class="px-5 py-3 md:px-8 md:py-4 rounded-2xl primary-gradient text-white font-label-bold text-label-bold transition-transform active:scale-95 accent-glow">
+                            View Work
+                        </button>
                         <a href="https://drive.usercontent.google.com/u/0/uc?id=1bdgfaPdp4HhCABd_AEjWm_8FQMAEDJBM&export=download"
-                            target="_blank" class="btn primary-btn"
-                            style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); box-shadow: none;">
-                            <i class="fas fa-download"></i> Download Resume
+                            target="_blank"
+                            class="px-5 py-3 md:px-8 md:py-4 rounded-2xl neumorph-extruded font-label-bold text-label-bold flex items-center gap-2 transition-all"
+                            style="color: var(--text-main);">
+                            <span class="material-symbols-outlined">download</span>
+                            Download CV
                         </a>
                     </div>
+                </div>
 
-                    <ul class="contact-list"
-                        style="flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 40px;">
-                        <li style="flex-direction: column; align-items: center; text-align: center; gap: 10px;">
-                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                            <div class="contact-details">
-                                <span class="contact-label">Phone</span>
-                                <a href="tel:+923196488975" class="contact-value">+92 319 6488975</a>
-                            </div>
-                        </li>
-                        <li style="flex-direction: column; align-items: center; text-align: center; gap: 10px;">
-                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="contact-details">
-                                <span class="contact-label">Location</span>
-                                <span class="contact-value">Islamabad, Pakistan</span>
-                            </div>
-                        </li>
-                        <li style="flex-direction: column; align-items: center; text-align: center; gap: 10px;">
-                            <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
-                            <div class="contact-details">
-                                <span class="contact-label">LinkedIn</span>
-                                <a href="https://www.linkedin.com/in/huzaifanoon/" target="_blank"
-                                    class="contact-value">Muhammad Huzaifa</a>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="flex-1 w-full max-w-md relative group z-10 flex justify-center">
+                    <div
+                        class="neumorph-extruded rounded-[28px] p-4 rotate-2 group-hover:rotate-0 transition-transform duration-500 w-full">
+                        <img class="rounded-[22px] w-full h-[400px] object-cover profile-img transition-all duration-500"
+                            src="pic2.png" alt="Muhammad Huzaifa" />
+                    </div>
+                    <!-- Floating Badge 1: Global Shortlisted Android Developer -->
+                    <div class="absolute -bottom-6 -left-6 neumorph-extruded p-5 rounded-2xl shadow-xl"
+                        style="background-color: var(--surface-color); border: 1px solid var(--border-outline);">
+                        <p class="font-label-bold text-xs uppercase tracking-wider" style="color: var(--primary);">
+                            Achievement</p>
+                        <p class="font-headline-md text-[18px] font-bold leading-tight"
+                            style="color: var(--text-main);">Android Developer</p>
+                        <p class="font-sans text-[11px] mt-1" style="color: var(--text-variant);">Appetiser Apps Top 3
+                        </p>
+                    </div>
+                    <!-- Floating Badge 2: Zylo Life OS -->
+                    <button
+                        onclick="document.getElementById('zylo-project').scrollIntoView({behavior: 'smooth', block: 'center'})"
+                        class="absolute -top-4 -right-4 neumorph-extruded py-3 px-5 rounded-2xl hidden sm:flex items-center gap-3 shadow-lg hover:scale-105 active:scale-95 transition-transform text-left"
+                        style="background-color: var(--surface-color); border: 1px solid var(--border-outline);"
+                        aria-label="Jump to Zylo project">
+                        <span class="material-symbols-outlined text-2xl"
+                            style="color: var(--primary);">rocket_launch</span>
+                        <div>
+                            <p class="font-label-bold text-xs font-bold" style="color: var(--text-main);">34+ Screens
+                            </p>
+                            <p class="font-sans text-[11px]" style="color: var(--text-variant);">Zylo Life OS</p>
+                        </div>
+                    </button>
                 </div>
             </div>
         </section>
+
+        <!-- ===== STATS GRID ===== -->
+        <section class="max-w-container-max mx-auto mb-20">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+                <div class="neumorph-extruded p-8 rounded-3xl text-center group">
+                    <h3 class="font-headline-xl-mobile text-headline-xl-mobile mb-2 group-hover:scale-110 transition-transform"
+                        style="color: var(--primary);">34+</h3>
+                    <p class="font-label-bold text-label-bold tracking-widest uppercase"
+                        style="color: var(--text-variant);">Screens in Zylo</p>
+                </div>
+                <div class="neumorph-extruded p-8 rounded-3xl text-center group">
+                    <h3 class="font-headline-xl-mobile text-headline-xl-mobile mb-2 group-hover:scale-110 transition-transform"
+                        style="color: var(--primary);">Top 3</h3>
+                    <p class="font-label-bold text-label-bold tracking-widest uppercase"
+                        style="color: var(--text-variant);">Appetiser Shortlist</p>
+                </div>
+                <div class="neumorph-extruded p-8 rounded-3xl text-center group">
+                    <h3 class="font-headline-xl-mobile text-headline-xl-mobile mb-2 group-hover:scale-110 transition-transform"
+                        style="color: var(--primary);">3.5</h3>
+                    <p class="font-label-bold text-label-bold tracking-widest uppercase"
+                        style="color: var(--text-variant);">Current CGPA</p>
+                </div>
+                <div class="neumorph-extruded p-8 rounded-3xl text-center group">
+                    <h3 class="font-headline-xl-mobile text-headline-xl-mobile mb-2 group-hover:scale-110 transition-transform"
+                        style="color: var(--primary);">50+</h3>
+                    <p class="font-label-bold text-label-bold tracking-widest uppercase"
+                        style="color: var(--text-variant);">Projects Done</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ACHIEVEMENTS / LEADERSHIP ===== -->
+        <section class="max-w-container-max mx-auto mb-20" id="achievements">
+            <div class="flex items-end gap-4 mb-10">
+                <div>
+                    <span class="font-label-bold uppercase tracking-widest mb-2 block"
+                        style="color: var(--primary);">Proof</span>
+                    <h2 class="font-headline-lg text-headline-lg" style="color: var(--text-main);">Achievements &amp;
+                        Leadership</h2>
+                </div>
+                <div class="section-rule flex-grow mb-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <div class="neumorph-extruded p-7 rounded-2xl">
+                    <span class="font-label-sm text-label-sm font-bold" style="color: var(--primary);">May 2026</span>
+                    <h3 class="font-headline-md text-[21px] font-semibold mt-2 mb-3" style="color: var(--text-main);">
+                        Top 3 Global Shortlist</h3>
+                    <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                        Shortlisted for Appetiser Apps' Junior Android Developer role after a 5-stage process with
+                        technical interviews and live timed coding assessments.
+                    </p>
+                </div>
+                <div class="neumorph-extruded p-7 rounded-2xl">
+                    <span class="font-label-sm text-label-sm font-bold" style="color: var(--primary);">2024 -
+                        Present</span>
+                    <h3 class="font-headline-md text-[21px] font-semibold mt-2 mb-3" style="color: var(--text-main);">
+                        Founder, Creative Dynamic Studio</h3>
+                    <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                        Built and led a student tech community in Islamabad, coordinating teams and events including
+                        Freshers Fest 2024 and FusionX with 1,000+ attendees.
+                    </p>
+                </div>
+                <div class="neumorph-extruded p-7 rounded-2xl">
+                    <span class="font-label-sm text-label-sm font-bold" style="color: var(--primary);">Summer
+                        2026</span>
+                    <h3 class="font-headline-md text-[21px] font-semibold mt-2 mb-3" style="color: var(--text-main);">
+                        Community &amp; Volunteer Work</h3>
+                    <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                        Supported Alkhidmat Foundation's hybrid volunteer internship program through outreach, digital
+                        coordination, and social impact work.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TECHNICAL SKILLS / MY SKILLS ===== -->
+        <section class="max-w-container-max mx-auto mb-20" id="skills">
+            <div class="flex items-end gap-4 mb-10">
+                <div>
+                    <span class="font-label-bold uppercase tracking-widest mb-2 block"
+                        style="color: var(--primary);">Technical Skills</span>
+                    <h2 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl"
+                        style="color: var(--text-main);">My Skills</h2>
+                </div>
+                <div class="h-1 flex-grow mb-4 rounded-full opacity-20" style="background: var(--primary);"></div>
+            </div>
+
+            <!-- 4-column grid for skills -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Card 1: Mobile Development (Primary Focus) -->
+                <div class="neumorph-extruded p-8 rounded-[28px] space-y-5 border-t-2"
+                    style="border-color: var(--primary);">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 neumorph-inset rounded-xl flex items-center justify-center"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined">phone_iphone</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold" style="color: var(--text-main);">Mobile
+                            Development</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--primary);">Flutter</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--primary);">Dart</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Kotlin</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Jetpack Compose</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Android SDK</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Riverpod</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">MVVM / Provider</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">SQLite / Local DB</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Web & Backend Engineering -->
+                <div class="neumorph-extruded p-8 rounded-[28px] space-y-5">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 neumorph-inset rounded-xl flex items-center justify-center"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined">terminal</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold" style="color: var(--text-main);">Web
+                            &amp; Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">React.js / Vite</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Node.js</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">FastAPI</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">RESTful APIs</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Express.js</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Laravel</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Tailwind CSS</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Safepay API</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">JWT Auth</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: AI, Cloud & Databases -->
+                <div class="neumorph-extruded p-8 rounded-[28px] space-y-5">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 neumorph-inset rounded-xl flex items-center justify-center"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined">cloud_sync</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold" style="color: var(--text-main);">AI,
+                            Cloud &amp; Databases</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Groq / Gemini LLMs</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Supabase</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Firebase (FCM)</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">PostgreSQL</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">MongoDB</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Hive NoSQL</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">OpenCV / YOLOv8</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Tesseract.js / OCR</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Languages & Core CS -->
+                <div class="neumorph-extruded p-8 rounded-[28px] space-y-5">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 neumorph-inset rounded-xl flex items-center justify-center"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined">code</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold" style="color: var(--text-main);">
+                            Languages &amp; Core CS</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Python</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Java</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">C++</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">JavaScript</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">OOP / DSA</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">Git / GitHub</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">x86 Assembly</span>
+                        <span class="px-3 py-1.5 neumorph-inset rounded-full text-[12px] font-bold"
+                            style="color: var(--text-variant);">InfoSec / Web Security</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Proficiency Bars -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+                <div class="neumorph-extruded p-6 rounded-[24px] space-y-4">
+                    <div class="flex justify-between font-label-bold text-label-bold">
+                        <span style="color: var(--text-main);">Flutter, Dart &amp; State Management</span>
+                        <span style="color: var(--primary);">95%</span>
+                    </div>
+                    <div class="h-3 w-full neumorph-inset rounded-full overflow-hidden">
+                        <div class="h-full primary-gradient rounded-full" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="neumorph-extruded p-6 rounded-[24px] space-y-4">
+                    <div class="flex justify-between font-label-bold text-label-bold">
+                        <span style="color: var(--text-main);">Native Android (Kotlin / Compose)</span>
+                        <span style="color: var(--primary);">90%</span>
+                    </div>
+                    <div class="h-3 w-full neumorph-inset rounded-full overflow-hidden">
+                        <div class="h-full primary-gradient rounded-full" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="neumorph-extruded p-6 rounded-[24px] space-y-4">
+                    <div class="flex justify-between font-label-bold text-label-bold">
+                        <span style="color: var(--text-main);">Full-Stack Web &amp; AI Integration</span>
+                        <span style="color: var(--primary);">85%</span>
+                    </div>
+                    <div class="h-3 w-full neumorph-inset rounded-full overflow-hidden">
+                        <div class="h-full primary-gradient rounded-full" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ===== FEATURED PROJECTS ===== -->
+        <section class="max-w-container-max mx-auto mb-20" id="projects">
+            <div class="flex flex-col md:flex-row items-end justify-between gap-8 mb-12">
+                <div class="max-w-2xl">
+                    <span class="font-label-bold uppercase tracking-widest mb-4 block"
+                        style="color: var(--primary);">Portfolio</span>
+                    <h2 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-6"
+                        style="color: var(--text-main);">
+                        Featured <span style="color: var(--primary);">Projects</span>
+                    </h2>
+                    <p class="font-body-lg text-body-lg leading-relaxed" style="color: var(--text-variant);">
+                        A focused selection of mobile, web, AI, and security projects. The first three show the
+                        strongest product thinking; the rest show breadth across backend, computer vision, and tooling.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-3 justify-center mb-12" id="projectFilters">
+                <button
+                    class="filter-btn active px-6 py-2.5 rounded-full neumorph-inset font-label-bold text-sm font-bold"
+                    data-filter="all">All Projects</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full neumorph-extruded font-label-bold text-sm font-bold"
+                    data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full neumorph-extruded font-label-bold text-sm font-bold"
+                    data-filter="web">Web Development</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full neumorph-extruded font-label-bold text-sm font-bold"
+                    data-filter="ai">AI &amp; Vision</button>
+                <button class="filter-btn px-6 py-2.5 rounded-full neumorph-extruded font-label-bold text-sm font-bold"
+                    data-filter="security">Security</button>
+            </div>
+
+            <!-- Projects Bento Grid (2-column responsive layout) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+
+                <!-- 1. Zylo — Personal Life OS (FLAGSHIP) -->
+                <div id="zylo-project"
+                    class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group border-2 scroll-mt-24"
+                    style="border-color: var(--primary);" data-category="mobile">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                            </div>
+                            <span
+                                class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold flex items-center gap-1.5 animate-pulse"
+                                style="color: var(--primary);">
+                                <span class="w-2 h-2 rounded-full" style="background-color: var(--primary);"></span>
+                                FLAGSHIP LIFE OS
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">Flutter</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Riverpod</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Supabase</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Groq AI</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Hive NoSQL</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            Zylo — Personal Life OS</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Four-platform personal Life OS for Android, iOS, Web, and Windows. I built task workflows,
+                            Markdown notes, voice logging, social gamification, local Hive caching, and context-aware AI
+                            companions with Groq and Gemini.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-4 pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://zylo-app-omega.vercel.app/" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            Launch App <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                        <a href="https://github.com/huzaifanoon" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px]"
+                            style="color: var(--text-variant);">
+                            GitHub Profile <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. OrganicFields.pk -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="web">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">agriculture</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                LIVE E-COMMERCE
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">React 18</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Vite</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Tailwind v3</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Supabase</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Safepay</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            OrganicFields.pk</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            E-commerce platform and booking system connecting users directly with fresh farm produce and
+                            guided Dam tours. Built with React 18, Supabase Auth/Storage, Safepay gateway integration,
+                            and Firebase FCM notifications.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-4 pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="http://organicfields.pk" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            Visit Platform <span class="material-symbols-outlined text-base">open_in_new</span>
+                        </a>
+                        <a href="https://github.com/huzaifanoon" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px]"
+                            style="color: var(--text-variant);">
+                            GitHub Profile <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Planora — Event Planning Platform -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="mobile">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">event_available</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                4 USER ROLES
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">Flutter</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Dart</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Firebase</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            Planora — Event Platform</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Full-stack event platform with 4 roles (Attendee, Organizer, Vendor, Admin), real-time
+                            ticketing, QR code check-ins, local SQLite cache, and a vendor product catalog marketplace.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/Planora-Full-Fledge-Event-System-MobileApp-Full-Stack"
+                            target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. CampusConnect App -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="mobile">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">school</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                CAMPUS PORTAL
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">Flutter</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Dart</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Firebase</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Provider</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            CampusConnect App</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Digitized university event management mobile application. Features dual student/admin
+                            panels, registration status flows, calendar feeds, and analytical dashboard charts.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/Campus-Connect-FullStack-Flutter-MobileApp"
+                            target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Event Platform (Full Stack) -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="web">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">hub</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                DUAL ARCHITECTURE
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">React 18</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">FastAPI</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Node.js</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">PostgreSQL</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            Event Platform (Full Stack)</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Event hosting system developed across dual backend architectures (React/FastAPI/PostgreSQL
+                            &amp; Node/Express/MongoDB) demonstrating professional clean architecture design.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/CDS-EventManagement-FullStackWebApp" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. Event Data Management -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="web">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">database</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                DATABASE ORIENTED
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">MongoDB</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Node.js</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Express</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            Event Data Management</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Backend database application focused on CRUD flows, aggregation queries, and indexed data
+                            retrieval for attendee tracking.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/Advanced-MongoDB-Management-System-CDSISB"
+                            target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. EventSight AI Platform -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="ai">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">visibility</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                COMPUTER VISION
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">Python</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">YOLOv8</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">OpenCV</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Deep Learning</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            EventSight AI Platform</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            AI computer vision system analyzing venue crowd distribution, zone safety levels, and
+                            performing real-time density segmentations for large-scale social events.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/EventSight-AI-CV-Project" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 8. AI Attendance System -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="ai">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">face</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                FACIAL RECOGNITION
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">Python</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">OpenCV</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Flask</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">ML</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">AI
+                            Attendance System (ML Technologies)</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Flask-based automated attendance portal employing OpenCV face detection and facial feature
+                            encoding vector comparisons to securely log check-ins in real-time.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/Facial-Recognition-Attendance-System-MachineLearningProject"
+                            target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 9. SmartPoster Scanner -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="ai">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">scanner</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                OCR SCANNING
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">JavaScript</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Tesseract.js</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">CV</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            SmartPoster Scanner</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Computer vision application designed to read event posters and automatically extract dates,
+                            locations, schedules, and ticket links using mobile OCR models.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/SmartPosterScanner-ComputerVision" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 10. Healthy Habits Pro -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="mobile">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">favorite</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                UTILITY / HABITS
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">Flutter</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">Dart</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">State Mgmt</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            Healthy Habits Pro</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Daily wellness and tracking application managing habit streaks, dynamic water intake
+                            milestones, system push reminders, and offline analytics database logging.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/Healthy-Habits-Flutter-App" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 11. Argus Vulnerability Scanner -->
+                <div class="neumorph-extruded project-card rounded-[32px] p-8 flex flex-col justify-between group"
+                    data-category="security">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl neumorph-inset flex items-center justify-center"
+                                style="color: var(--primary);">
+                                <span class="material-symbols-outlined text-3xl">security</span>
+                            </div>
+                            <span class="px-3.5 py-1.5 neumorph-inset rounded-full text-xs font-bold"
+                                style="color: var(--primary);">
+                                SECURITY TOOLS
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--primary);">Python</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">SQLi</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">XSS</span>
+                            <span class="px-2.5 py-1 neumorph-inset rounded-full text-[10px] font-bold"
+                                style="color: var(--text-variant);">CVSS 3.1</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-2" style="color: var(--text-main);">
+                            Argus Vulnerability Scanner</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed mb-6" style="color: var(--text-variant);">
+                            Automated security scanner identifying SQL Injection, Cross-Site Scripting (XSS), blind
+                            SQLi, and missing HTTP headers in targeted domains. Auto-generates CVSS 3.1 scoring
+                            matrices.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-outline);">
+                        <a href="https://github.com/huzaifanoon/Argus-VulnerabilityScanner-RealTime" target="_blank"
+                            class="inline-flex items-center gap-1 font-bold text-[13px] hover:translate-x-1 transition-transform"
+                            style="color: var(--primary);">
+                            GitHub Repo <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== WORK EXPERIENCE ===== -->
+        <section class="max-w-container-max mx-auto mb-20" id="experience">
+            <span class="font-label-bold uppercase tracking-widest mb-2 block"
+                style="color: var(--primary);">Career</span>
+            <h2 class="font-headline-lg text-headline-lg mb-12" style="color: var(--text-main);">Work Experience</h2>
+            <div class="space-y-10 border-l-2 pl-8 relative" style="border-color: var(--border-outline);">
+
+                <!-- Exp 1: DevHawks -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4 accent-glow animate-pulse"
+                        style="background: var(--primary); --tw-ring-color: var(--bg-color);"></div>
+                    <div class="neumorph-extruded p-8 rounded-3xl space-y-2">
+                        <span class="font-label-sm text-label-sm font-bold" style="color: var(--primary);">Jul 2026 -
+                            Aug 2026</span>
+                        <h3 class="font-headline-md text-headline-md" style="color: var(--text-main);">Junior Mobile
+                            Application Engineer Intern</h3>
+                        <p class="font-label-bold text-label-bold" style="color: var(--text-variant);">DevHawks
+                            (Private) Limited</p>
+                        <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                            Designing, developing, and testing features for production mobile applications. Collaborated
+                            with cross-functional engineering teams to implement clean architecture, Riverpod state
+                            management, and optimize app performance.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Exp 3: SafeX Solutions -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4"
+                        style="background: var(--primary); --tw-ring-color: var(--bg-color);"></div>
+                    <div class="neumorph-extruded p-8 rounded-3xl space-y-2">
+                        <span class="font-label-sm text-label-sm font-bold" style="color: var(--primary);">May 2026 -
+                            Jul 2026</span>
+                        <h3 class="font-headline-md text-headline-md" style="color: var(--text-main);">Web Development
+                            Intern</h3>
+                        <p class="font-label-bold text-label-bold" style="color: var(--text-variant);">SafeX Solutions
+                        </p>
+                        <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                            Developing responsive real-world web applications and collaborating with senior engineers to
+                            implement scalable frontend and backend features.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Exp 4: FlyRank AI -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4"
+                        style="background: var(--primary); --tw-ring-color: var(--bg-color);"></div>
+                    <div class="neumorph-extruded p-8 rounded-3xl space-y-2">
+                        <span class="font-label-sm text-label-sm font-bold" style="color: var(--primary);">Jul 2025 -
+                            Aug 2025</span>
+                        <h3 class="font-headline-md text-headline-md" style="color: var(--text-main);">Back-End AI
+                            Engineering Intern</h3>
+                        <p class="font-label-bold text-label-bold" style="color: var(--text-variant);">FlyRank AI</p>
+                        <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                            Selected for back-end AI engineering internship focused on LLM integration, backend
+                            infrastructure, and scalable API pipelines for intelligent applications.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Exp 5: SPS Intern -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4"
+                        style="background: var(--primary); --tw-ring-color: var(--bg-color);"></div>
+                    <div class="neumorph-extruded p-8 rounded-3xl space-y-2">
+                        <span class="font-label-sm text-label-sm font-bold" style="color: var(--primary);">June 2025 -
+                            Sep 2025</span>
+                        <h3 class="font-headline-md text-headline-md" style="color: var(--text-main);">AI Intern</h3>
+                        <p class="font-label-bold text-label-bold" style="color: var(--text-variant);">Software
+                            Productivity Strategist (SPS)</p>
+                        <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                            Assisted in the automation of billing system workflows using AI tooling to significantly
+                            improve pipeline efficiency and reduce manual processing overhead. Supported full-stack
+                            development tasks.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Exp 6: Nisum -->
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full ring-4"
+                        style="background: var(--primary); --tw-ring-color: var(--bg-color);"></div>
+                    <div class="neumorph-extruded p-8 rounded-3xl space-y-2">
+                        <span class="font-label-sm text-label-sm font-bold" style="color: var(--primary);">Jan 2024 -
+                            Jan 2026</span>
+                        <h3 class="font-headline-md text-headline-md" style="color: var(--text-main);">Web Developer
+                        </h3>
+                        <p class="font-label-bold text-label-bold" style="color: var(--text-variant);">Nisum</p>
+                        <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                            Spearheaded the development and customization of responsive websites for small businesses.
+                            Implemented full-stack solutions, dynamic plugin integrations, and basic SEO optimization.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== SERVICES SECTION ===== -->
+        <section class="max-w-container-max mx-auto mb-20" id="services">
+            <div class="flex items-end gap-4 mb-10">
+                <div>
+                    <span class="font-label-bold uppercase tracking-widest mb-2 block"
+                        style="color: var(--primary);">What I Offer</span>
+                    <h2 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl"
+                        style="color: var(--text-main);">Professional Services</h2>
+                </div>
+                <div class="h-1 flex-grow mb-4 rounded-full opacity-20" style="background: var(--primary);"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service 1: Mobile App Dev -->
+                <div class="neumorph-extruded p-8 rounded-[32px] flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl neumorph-inset flex items-center justify-center mb-6"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined text-3xl">phone_android</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-3" style="color: var(--text-main);">
+                            Mobile App Development</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed" style="color: var(--text-variant);">
+                            End-to-end cross-platform Flutter and Native Android (Kotlin/Jetpack Compose) development.
+                            From UI/UX design to robust Riverpod/MVVM architectures and store deployment.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t flex items-center justify-between"
+                        style="border-color: var(--border-outline);">
+                        <span class="text-[10px] md:text-[11px] font-bold tracking-wider uppercase"
+                            style="color: var(--text-variant);">iOS · Android · Windows</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
+                            class="w-10 h-10 rounded-full neumorph-extruded flex items-center justify-center hover:scale-110 active:scale-95 transition-transform"
+                            style="color: var(--primary);" title="Inquire about Service">
+                            <span class="material-symbols-outlined text-lg">mail</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2: Web Development -->
+                <div class="neumorph-extruded p-8 rounded-[32px] flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl neumorph-inset flex items-center justify-center mb-6"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined text-3xl">language</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-3" style="color: var(--text-main);">
+                            Full-Stack Web Development</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed" style="color: var(--text-variant);">
+                            Web applications built with React 18, Vite, and Tailwind CSS, backed by Node.js, Express.js,
+                            FastAPI, PostgreSQL, MongoDB, and Supabase where the product needs auth, payments, or
+                            real-time workflows.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t flex items-center justify-between"
+                        style="border-color: var(--border-outline);">
+                        <span
+                            class="text-[10px] md:text-[11px] font-bold tracking-wider uppercase max-w-[70%] leading-tight"
+                            style="color: var(--text-variant);">React · Node · FastAPI · Postgres · MongoDB</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
+                            class="w-10 h-10 rounded-full neumorph-extruded flex items-center justify-center hover:scale-110 active:scale-95 transition-transform"
+                            style="color: var(--primary);" title="Inquire about Service">
+                            <span class="material-symbols-outlined text-lg">mail</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3: AI Integration -->
+                <div class="neumorph-extruded p-8 rounded-[32px] flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl neumorph-inset flex items-center justify-center mb-6"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined text-3xl">psychology</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-3" style="color: var(--text-main);">AI
+                            &amp; LLM Integration</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed" style="color: var(--text-variant);">
+                            Practical AI features such as portfolio assistants, context-aware LLM flows with Groq or
+                            Gemini, and computer vision pipelines using OpenCV.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t flex items-center justify-between"
+                        style="border-color: var(--border-outline);">
+                        <span class="text-[10px] md:text-[11px] font-bold tracking-wider uppercase"
+                            style="color: var(--text-variant);">LLMs · Computer Vision</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
+                            class="w-10 h-10 rounded-full neumorph-extruded flex items-center justify-center hover:scale-110 active:scale-95 transition-transform"
+                            style="color: var(--primary);" title="Inquire about Service">
+                            <span class="material-symbols-outlined text-lg">mail</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4: Technical Consulting -->
+                <div class="neumorph-extruded p-8 rounded-[32px] flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl neumorph-inset flex items-center justify-center mb-6"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined text-3xl">architecture</span>
+                        </div>
+                        <h3 class="font-headline-md text-[20px] font-semibold mb-3" style="color: var(--text-main);">
+                            Technical Consulting</h3>
+                        <p class="font-body-md text-[14px] leading-relaxed" style="color: var(--text-variant);">
+                            Clean architecture design, code audits, offline-first local caching strategies (Hive NoSQL),
+                            and backend database schema optimization for scaling software systems.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t flex items-center justify-between"
+                        style="border-color: var(--border-outline);">
+                        <span class="text-[10px] md:text-[11px] font-bold tracking-wider uppercase"
+                            style="color: var(--text-variant);">Architecture · Scalability</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
+                            class="w-10 h-10 rounded-full neumorph-extruded flex items-center justify-center hover:scale-110 active:scale-95 transition-transform"
+                            style="color: var(--primary);" title="Inquire about Service">
+                            <span class="material-symbols-outlined text-lg">mail</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EDUCATION (SEPARATE SECTION) ===== -->
+        <section class="max-w-container-max mx-auto mb-20" id="education">
+            <span class="font-label-bold uppercase tracking-widest mb-2 block"
+                style="color: var(--primary);">Education</span>
+            <h2 class="font-headline-lg text-headline-lg mb-12" style="color: var(--text-main);">Academic Journey</h2>
+            <div class="max-w-3xl mx-auto">
+                <!-- BS CS -->
+                <div class="neumorph-inset p-8 rounded-[28px] space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 neumorph-extruded rounded-full flex items-center justify-center"
+                            style="color: var(--primary);">
+                            <span class="material-symbols-outlined">school</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-md text-headline-md" style="color: var(--text-main);">BS Computer
+                                Science</h3>
+                            <p class="font-label-sm text-label-sm" style="color: var(--text-variant);">COMSATS
+                                University Islamabad</p>
+                        </div>
+                    </div>
+                    <p class="font-body-md text-body-md" style="color: var(--text-variant);">
+                        Core Focus: Object-Oriented Programming, Data Structures &amp; Algorithms, Computer Networks,
+                        and DBMS.
+                    </p>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="px-4 py-2 neumorph-extruded rounded-lg font-label-bold text-label-bold"
+                            style="color: var(--primary);">CGPA: 3.5 / 4.0</span>
+                        <span class="px-4 py-2 neumorph-extruded rounded-lg font-label-bold text-label-bold"
+                            style="color: var(--text-variant);">2023 - 2027</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section class="max-w-container-max mx-auto mb-20" id="contact">
+            <div class="neumorph-extruded rounded-[32px] overflow-hidden p-8 md:p-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div class="space-y-8">
+                        <div>
+                            <span class="font-label-bold uppercase tracking-widest mb-2 block"
+                                style="color: var(--primary);">Get In Touch</span>
+                            <h2 class="font-headline-xl-mobile text-headline-xl-mobile"
+                                style="color: var(--text-main);">Let's Connect</h2>
+                        </div>
+                        <p class="font-body-lg text-body-lg" style="color: var(--text-variant);">
+                            I'm currently looking for new opportunities in software engineering. Whether you have a
+                            question, a project proposal, or just want to say hi, feel free to reach out directly!
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-6 p-4 neumorph-inset rounded-2xl">
+                                <div class="w-12 h-12 neumorph-extruded rounded-full flex items-center justify-center"
+                                    style="color: var(--primary);">
+                                    <span class="material-symbols-outlined">call</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-sm text-label-sm uppercase"
+                                        style="color: var(--text-variant);">Phone</p>
+                                    <a href="tel:+923196488975"
+                                        class="font-label-bold text-label-bold transition-colors"
+                                        style="color: var(--text-main);">+92 319 6488975</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6 p-4 neumorph-inset rounded-2xl">
+                                <div class="w-12 h-12 neumorph-extruded rounded-full flex items-center justify-center"
+                                    style="color: var(--primary);">
+                                    <span class="material-symbols-outlined">mail</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-sm text-label-sm uppercase"
+                                        style="color: var(--text-variant);">Email</p>
+                                    <a href="mailto:huzaifanoon21@gmail.com"
+                                        class="font-label-bold text-label-bold transition-colors"
+                                        style="color: var(--text-main);">huzaifanoon21@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6 p-4 neumorph-inset rounded-2xl">
+                                <div class="w-12 h-12 neumorph-extruded rounded-full flex items-center justify-center"
+                                    style="color: var(--primary);">
+                                    <span class="material-symbols-outlined">location_on</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-sm text-label-sm uppercase"
+                                        style="color: var(--text-variant);">Location</p>
+                                    <p class="font-label-bold text-label-bold" style="color: var(--text-main);">
+                                        Islamabad, Pakistan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Form → WhatsApp -->
+                    <form id="contactForm" class="neumorph-inset p-8 rounded-[28px] space-y-5">
+                        <div class="space-y-2">
+                            <label class="font-label-bold text-label-bold ml-2"
+                                style="color: var(--text-variant);">Name</label>
+                            <input id="contactName"
+                                class="w-full bg-transparent border-none focus:ring-0 p-4 neumorph-inset rounded-2xl"
+                                style="color: var(--text-main);" placeholder="Your Name" type="text" required />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-label-bold text-label-bold ml-2"
+                                style="color: var(--text-variant);">Email</label>
+                            <input id="contactEmail"
+                                class="w-full bg-transparent border-none focus:ring-0 p-4 neumorph-inset rounded-2xl"
+                                style="color: var(--text-main);" placeholder="Your Email" type="email" required />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-label-bold text-label-bold ml-2"
+                                style="color: var(--text-variant);">Message</label>
+                            <textarea id="contactMessage"
+                                class="w-full bg-transparent border-none focus:ring-0 p-4 neumorph-inset rounded-2xl"
+                                style="color: var(--text-main);" placeholder="How can I help you?" rows="4"
+                                required></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full py-4 primary-gradient rounded-2xl text-white font-headline-md text-[20px] font-bold accent-glow active:scale-95 transition-transform flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            Send via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer
+            class="max-w-container-max mx-auto py-12 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0"
+            style="border-top: 1px solid var(--border-outline);">
+            <div class="font-headline-md text-headline-md font-black" style="color: var(--text-main);">MH.</div>
+            <p class="font-body-md text-body-md text-center md:text-left" style="color: var(--text-variant);">
+                © 2026 Muhammad Huzaifa. Built with care and kept honest.
+            </p>
+            <div class="flex gap-4">
+                <a href="https://github.com/huzaifanoon" target="_blank" aria-label="GitHub"
+                    class="w-12 h-12 neumorph-extruded rounded-full flex items-center justify-center transition-colors"
+                    style="color: var(--text-variant);">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/muhammad-huzaifa-811772275/" target="_blank" aria-label="LinkedIn"
+                    class="w-12 h-12 neumorph-extruded rounded-full flex items-center justify-center transition-colors"
+                    style="color: var(--text-variant);">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="mailto:huzaifanoon21@gmail.com" aria-label="Email"
+                    class="w-12 h-12 neumorph-extruded rounded-full flex items-center justify-center transition-colors"
+                    style="color: var(--text-variant);">
+                    <span class="material-symbols-outlined">mail</span>
+                </a>
+            </div>
+        </footer>
     </main>
 
-    <!-- Footer -->
-    <footer class="glass-footer">
-        <div class="footer-content">
-            <div class="logo">
-                <span class="logo-accent">M</span>H.
+    <!-- ===== FLOATING BUTTONS (Chat + Scroll-to-top) ===== -->
+    <div class="floating-btns">
+        <!-- Scroll to Top (hidden by default, appears on scroll) -->
+        <button id="scrollTopBtn" class="fab-btn primary-gradient accent-glow text-white" aria-label="Back to top"
+            title="Back to Top">
+            <span class="material-symbols-outlined text-2xl">arrow_upward</span>
+        </button>
+        <!-- AI Chat Button (always visible) -->
+        <button id="chatBtn" class="fab-btn primary-gradient accent-glow text-white" aria-label="Chat with AI"
+            title="Ask AI about Huzaifa">
+            <span class="material-symbols-outlined text-2xl">chat_bubble</span>
+        </button>
+    </div>
+
+    <!-- ===== AI CHAT WIDGET ===== -->
+    <div class="chat-overlay" id="chatOverlay"></div>
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <h3>Ask about Huzaifa</h3>
             </div>
-            <p>&copy; 2026 Muhammad Huzaifa. Built with precision and passion.</p>
-            <div class="social-links">
-                <a href="https://github.com/huzaifanoon" target="_blank" class="social-icon"><i
-                        class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/huzaifanoon/" target="_blank" class="social-icon"><i
-                        class="fab fa-linkedin-in"></i></a>
-            </div>
+            <button id="chatClose" aria-label="Close chat">
+                <span class="material-symbols-outlined">close</span>
+            </button>
         </div>
-    </footer>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg bot">Hi, I'm Huzaifa's portfolio assistant. Ask about his skills, projects, experience,
+                or education.</div>
+        </div>
+        <div class="chat-input-area">
+            <input id="chatInput" type="text" placeholder="Ask something..." autocomplete="off" />
+            <button id="chatSend" aria-label="Send message">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
