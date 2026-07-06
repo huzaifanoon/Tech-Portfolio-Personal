@@ -7,12 +7,12 @@
 function initTheme() {
     const saved = localStorage.getItem('portfolio-theme');
     const html = document.documentElement;
-    if (saved === 'light') {
-        html.classList.remove('dark');
-        html.classList.add('light');
-    } else {
+    if (saved === 'dark') {
         html.classList.remove('light');
         html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
     }
 }
 
