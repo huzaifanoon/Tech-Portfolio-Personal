@@ -152,10 +152,10 @@ ACHIEVEMENTS & LEADERSHIP:
 
 WORK EXPERIENCE:
 - Junior Mobile Application Engineer Intern at DevHawks — Jul 2026-Aug 2026. Mobile app features, Riverpod, clean architecture.
-- Web Development Intern at SafeX Solutions — May 2026-Jul 2026. Real-world web apps frontend/backend features.
-- Back-End AI Engineering Intern at FlyRank AI — Jul 2025-Aug 2025. LLM integration, backend APIs.
+- Web Development Intern at SafeX Solutions — May 2026-Jun 2026. Real-world web apps frontend/backend features.
+- Back-End AI Engineering Intern at FlyRank AI — Apr 2025-Jun 2025. LLM integration, backend APIs.
 - AI Intern at Software Productivity Strategist (SPS) — Jun 2025-Sep 2025. Billing automation, AI tooling.
-- Full-Stack Web Developer at Nisum — Jan 2024-Jan 2026. Responsive websites, plugins, SEO.
+- Full-Stack Web Developer at Nisum — Jan 2024-Feb 2025. Responsive websites, plugins, SEO.
 - Digital Marketing Specialist (Freelance) — 2021-2023. Campaigns with 1M+ social media reach.
 
 CONTACT:
