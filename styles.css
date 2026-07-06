@@ -530,4 +530,35 @@ body::-webkit-scrollbar-thumb {
         width: 48px;
         height: 48px;
     }
+
+    .chat-widget {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100vw;
+        max-width: 100vw;
+        height: 85vh;
+        max-height: 85vh;
+        border-radius: 28px 28px 0 0;
+        margin: 0;
+        transform: translateY(100%);
+    }
+
+    .chat-widget.active {
+        transform: translateY(0);
+    }
+
+    .chat-messages {
+        max-height: none;
+        flex: 1;
+    }
+}
+
+/* Hide scrollbar for nav links */
+.nav-links::-webkit-scrollbar {
+    display: none;
+}
+.nav-links {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
