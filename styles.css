@@ -11,7 +11,7 @@
     --text-variant: #65716E;
     --primary: #0F6B63;
     --secondary: #B76545;
-    --primary-gradient: linear-gradient(135deg, #0F6B63 0%, #B76545 100%);
+    --primary-gradient: #0F6B63;
     --shadow-extruded: 8px 8px 16px rgba(160, 151, 137, 0.52);
     --shadow-inset: inset 6px 6px 12px rgba(160, 151, 137, 0.48);
     --shadow-active: inset 4px 4px 8px rgba(160, 151, 137, 0.55);
