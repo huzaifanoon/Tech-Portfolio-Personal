@@ -151,6 +151,7 @@ ACHIEVEMENTS & LEADERSHIP:
 - Alkhidmat Foundation volunteer internship, Summer 2026, supporting outreach and digital coordination.
 
 WORK EXPERIENCE:
+- Undergraduate Research Assistant — Mobile Application Development at COMSATS University Islamabad — Jul 2026-Present. Conducting faculty-supervised research on mobile application development, paper in preparation.
 - Junior Mobile Application Engineer Intern at DevHawks — Jul 2026-Aug 2026. Mobile app features, Riverpod, clean architecture.
 - Web Development Intern at SafeX Solutions — May 2026-Jun 2026. Real-world web apps frontend/backend features.
 - Back-End AI Engineering Intern at FlyRank AI — Apr 2025-Jun 2025. LLM integration, backend APIs.
